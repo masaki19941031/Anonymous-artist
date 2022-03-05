@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- font-awesome追加 -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <!-- レスポンシブデザイン -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+
+  <body>
+  <!-- ナビゲーションバー -->
+    <header class="header">
+      <%= image_tag(asset_path('logo.png'), class: "logo") %>
+      <div id="sp-menu">
+        <!-- <ul class="list-group list-group-horizontal">
+          <% if user_signed_in? %>
+            <li class= "nav"><a href="#"><%= link_to "TOP", root_path %></a></li>
+            <li class= "nav"><a href="#"><%= link_to "About", about_path %></a></li>
+            <li class= "nav"><a href="#"><%= link_to "Logout", destroy_user_session_path, method: :delete %></a></li>
+            <li class= "nav"><a href="#"><%= link_to "My Page", user_path(current_user.id) %></a></li>
+            <li class= "nav">
+              <%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", :class => "p-img" %>
+            </li>
+          <% else %>
+            <li class="nav"><%= link_to "TOP", root_path %></li>
+            <li class="nav"><%= link_to "About", about_path %></li>
+            <li class="nav"><%= link_to "Login", new_user_session_path %></li>
+            <li class="nav"><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul> -->
+      </div>
+
+      <ul>
+        <% if user_signed_in? %>
+          <li class="nav"><a href="#"><%= link_to "TOP", root_path %></a></li>
+          <li class="nav"><a href="#"><%= link_to "About", about_path %></a></li>
+          <li class="nav"><a href="#"><%= link_to "Logout", destroy_user_session_path, method: :delete %></a></li>
+          <li class="nav"><a href="#"><%= link_to "My Page", user_path(current_user.id) %></a></li>
+          <li><a href="#">
+            <%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", :class => "p-img" %></a></li>
+        <% else %>
+          <li class="nav"><%= link_to "TOP", root_path %></li>
+          <li class="nav"><%= link_to "About", about_path %></li>
+          <li class="nav"><%= link_to "Login", new_user_session_path %></li>
+          <li class="nav"><%= link_to "Sign up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+    </div>
+    </header>
+
+  <!-- ログインエラー時のflashメッセージ -->
+      <% if flash[:alert] %>
+        <div class="alert">
+          <%= alert %>
+        </div>
+      <% end %>
+
+  <!-- flashサクセスメッセージ  -->
+      <br>
+      <br>
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+    <%= yield %>
+
+  <footer>
+    <p>© ALL rights reserved by Anonymous-artist.Inc.</p>
+  </footer>
+
+
+  </body>
+</html>

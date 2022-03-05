@@ -1,0 +1,17 @@
+<div class="results">
+	<h1>- results -</h1>
+		<table class="results-list">
+			<tr>
+				<th class="profile_image_id"></th>
+				<th class="result-name">ユーザー名</th>
+			</tr>
+		<% @users.each do |user| %>
+			<tr>
+				<%= link_to user_path(user.id) do %>
+					<td><%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size:'40x40' %></td>
+					<td><%= link_to user.name, user_path(user) %></td>
+				<% end %>
+			</tr>
+		<% end %>
+		</table>
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Anonymous-artist</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%# binding.pry %>
+    <% if admin_signed_in? %>
+      <header class="admin_header">
+        <div class="header-content">
+          <%= link_to 'NaganoCake', admin_top_path, class: "logo" %>
+          <ul class="flex">
+            <li><%= link_to '商品一覧', admin_items_path %></li>
+            <li><%= link_to '会員一覧', admin_customers_path %></li>
+            <li><%= link_to '注文履歴一覧', admin_orders_path %></li>
+            <li><%= link_to 'ジャンル管理', admin_genres_path %></li>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          </ul>
+          <%= form_tag(admin_search_path, method: :get) do %>
+            <%= text_field_tag "search[content]", "", :placeholder =>"会員: 姓,名,セイ,メイ / 商品: 商品名" %>
+            <%= select_tag "search[model]", options_for_select({ "会員" => "customer", "商品" => "item" }) %>
+            <%= select_tag "search[method]", options_for_select({ "部分一致" => "partial", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "perfect" }) %>
+            <%= submit_tag '検索', class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </header>
+    <% elsif customer_signed_in? %>
+      <header>
+        <div class="header-content">
+          <%= link_to 'NaganoCake', root_path, class: "logo" %>
+          <ul class="flex">
+            <p>ようこそ、<%= current_customer.full_name %>さん!</p>
+            <li><%= link_to 'マイページ', mypage_path %></li>
+            <li><%= link_to '商品一覧', items_path %></li>
+            <li><%= link_to 'カート', cart_items_path %></li>
+            <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </header>
+    <% else %>
+      <header>
+        <div class="header-content">
+          <%= link_to 'NaganoCake', root_path, class: "logo" %>
+          <ul class="flex">
+            <li><%= link_to '商品一覧', items_path %></li>
+            <li><%= link_to '新規登録', new_customer_registration_path %></li>
+            <li><%= link_to 'ログイン', new_customer_session_path %></li>
+          </ul>
+        </div>
+      </header>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>Copyright © Infratop Inc. All Rights Reserved.</footer>
+  </body>
+</html>

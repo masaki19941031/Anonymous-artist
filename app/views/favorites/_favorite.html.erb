@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+	<% if @post_image.favorited_by?(current_user) %>
+		<ol>
+			<%= link_to post_image_favorites_path(@post_image), method: :delete, remote: true do %>
+			<i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+			 <i class="fas fa-heart fa-2x unlike-btn"></i>
+			 <%= @post_image.favorites.count %>
+			<% end %>
+		</ol>
+
+	<% else %>
+		<ol>
+			<%= link_to post_image_favorites_path(@post_image), method: :post, remote: true do %>
+			<i class="glyphicon glyphicon-heart" aria-hidden="true",></i>
+			<i class="fas fa-heart fa-2x like-btn"></i>
+			<%= @post_image.favorites.count %>
+			<% end %>
+		</ol>
+	<% end %>
+<% end %>

@@ -1,0 +1,259 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /*bootstrap用に追加*/
+  @import "bootstrap";
+
+* {
+  box-sizing: border-box;
+}
+
+.logo{
+  margin-top: 0;
+  padding:20px;
+  filter: drop-shadow(0 0 20px gray);
+  display: inline-block;
+  height:100%;
+  width:300px;
+  height:170px;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  padding-bottom: 50px;
+  font-family: 'TsukuARdGothic-Regular',sans-serif;
+  background-color: #ffffe5;
+  background: image-url('background.jpg');
+
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  margin-left: 120px;
+}
+
+//margin-rightでnav間隔調整
+li {
+  margin-right:80px;
+  margin-top:20px;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+//navの上下調整
+.nav{
+a{
+  // line-height:110px;
+  text-decoration:none;
+  margin-top:40px;
+  margin-right:20px;
+}
+}
+
+//hovorする
+.nav{
+  background: #d6ffd6;
+  // display: block;
+  transition: color 300ms, background-color 300ms;
+  &:hover{
+    opacity: 0.5;
+    color: #fff;
+    border-bottom:3px solid #00B0F0;
+  }
+}
+
+
+header{
+	width:100%;
+	background-color:#d6ffd6;
+  opacity: 0.95;
+	height:110px;
+	align-items: center;
+  display:flex;
+}
+
+
+//文章全体に反映
+a {
+   text-decoration: none;
+   color: #4b4b4b;
+}
+
+//header右上アイコン
+.p-img {
+  border-radius:50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width:  75px;       /* ※縦横を同値に */
+  height: 75px;       /* ※縦横を同値に */
+  margin:20px;
+}
+
+.icon{
+	right:70px;
+  top:25px;
+}
+
+//flashメッセージ
+.alert{
+	color: red;
+}
+
+.flash{
+  font-weight:bold;
+  font-size:20px;
+  color:red;
+  text-align: center;
+}
+
+//画像の縦横比
+.attachment{
+  object-fit:cover;
+  opacity: 0.9;
+}
+
+footer{
+  width:100%;
+  height:30px;
+  background-color:#bcffff;
+  text-align: center;
+  font-style:italic;
+  position: fixed; bottom: 0;
+}
+
+.clearfix::after{
+  content:"";
+  display: block;
+  clear:both;
+}
+
+.actions{
+  margin:10px;
+}
+
+
+
+
+//レスポンシブ
+@media screen and (max-width: 768px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
+
+li{
+  display: none;
+a{
+  display: none;
+}
+}
+
+/* ---------------------------- */
+/* --- ハンバーガーアイコン --- */
+/* ---------------------------- */
+#hm-icon{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+}
+
+.menu-trigger,
+.menu-trigger span{
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+
+.menu-trigger{
+  position: relative;
+  width: 50px;
+  height: 44px;
+}
+
+.menu-trigger span{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+}
+
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 20px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+.menu-trigger.active span:nth-of-type(1) {
+  -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  background-color: #fff;
+}
+.menu-trigger.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.menu-trigger.active span:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  background-color: #fff;
+}
+/* ------------------------ */
+/* ------ spメニュー ------ */
+/* ------------------------ */
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #eaffea;
+  color: #fff;
+  width: 100%;
+  min-height: 30%;
+  display: none;
+  z-index: 9;
+}
+#sp-menu li{
+  text-align: center;
+  margin-bottom: 30px;
+}
+#sp-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+body{
+  width:400px;
+}
+
+.list-group-horizontal{
+  flex-direction: column;
+}
+
+}
+
+
+
+// @media(max-width:1000px){
+//   header{
+//     width:25%;
+//   }
+// }
+

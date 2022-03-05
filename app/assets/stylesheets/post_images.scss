@@ -1,0 +1,150 @@
+// Place all the styles related to the post_images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h2{
+	padding-top:20px;
+	margin-left:20px;
+}
+
+//親要素photoに入れ子構造
+.photo{
+	padding:20px;
+  width:100%;
+	float:left;
+  // column-count: 3;
+  column-width:100%;
+  margin-left: 30px;
+  max-width: 100%;
+  height: auto;
+
+.attachment{
+  object-fit:cover;
+}
+
+.attachment::before {
+  content: "";
+  display: inline-block;
+  padding-top: 50%;
+}
+}
+//入れ子ここまで
+
+
+//post_images#index項目
+
+.index-page{
+  margin-right: 1000px;
+  font-size:30px;
+}
+
+//post-image#show
+//show-photoはattachmentと同じdiv
+.show_photo{
+	text-align: center;
+	margin-top:30px;
+  object-fit:cover;
+}
+
+.photo2{
+  display: inline-block;
+}
+
+.title-comment{
+	margin-top:20px;
+	margin-left:270px;
+}
+
+.date{
+	text-align :right;
+	margin-right :280px;
+  font-style:italic;
+  font-size:24px;
+}
+
+//コメントCSS
+.comment-index{
+  font-size:20px;
+  font-weight: bold;
+  color:#594e52;
+}
+
+textarea {
+  max-width: 500px;
+  clear: both;
+}
+//ここまでpost_images#show
+
+.username{
+	font-size: 25px;
+	font-weight:bold;
+}
+
+//post_images#new
+.new-post{
+	margin:0 auto;
+}
+
+.form-control{
+  margin:0 auto;
+}
+
+//post_images#new 投稿フォーム
+input[type="title"] {
+  width: 200px;
+  height: 30px;
+}
+
+input[type="body"] {
+  width: 250px;
+  height: 50px;
+}
+
+//index/js上に戻るボタン追加
+#page_top{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+  background: #3f98ef;
+  opacity: 0.8;
+  border-radius: 50%;
+}
+
+.scroll-top:hover {
+  cursor: pointer;
+}
+
+#page_top a{
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f102';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -10px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+//JSボタンここまで
+
+//レスポンシブ対応用記述
+@media screen and (max-width: 479px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
+.photo{
+    width:auto;
+    float:none;
+    column-count: auto;
+}
+}

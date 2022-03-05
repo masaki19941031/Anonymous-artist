@@ -1,0 +1,14 @@
+<h1 style="text-align: center">フォロー中 一覧</h1>
+	<% @user.following_user.each do |user| %>
+		<table class="follow_page">
+			<tr>
+				<td>  <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size: "80x80" %></td>
+
+				<td>  <%= link_to user.name, user_path(user) %> </td>
+			</tr>
+		</table>
+	<% end %>
+
+<div class="back">
+	<%= link_to "戻る", user_path(@user) %>
+</div>

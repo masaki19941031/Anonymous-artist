@@ -1,0 +1,38 @@
+<div class="container clearfix">
+	<div class="row">
+		<div class="new">NEW POST！
+			<div class="new-post">
+				<%= link_to "新規投稿", new_post_image_path %>
+			</div>
+		</div>
+	</div>
+
+	<!-- 検索機能 -->
+	<div class="form">
+		<%= form_with url: users_search_path, method: :get, local: true do |f| %>
+			<%= f.text_field :name, :placeholder => "User Search" %>
+			<%= f.submit "検索" %>
+		<% end %>
+	</div>
+	<!-- ここまで検索機能 -->
+
+
+	<!-- 新着投稿写真を6枚載せる。 -->
+
+	<div class="photo">
+		<% @post_images.each do |post_image| %>
+			<div class= "photo2">
+				<%= link_to post_image_path(post_image.id) do %>
+					<%= attachment_image_tag post_image, :image, size: "290x290" ,class: "image-fluid"%>
+				<% end %>
+				<br>
+					Photo by <strong><%= link_to post_image.user.name, user_path(post_image.user_id) %></strong>
+			</div>
+		<% end %>
+
+		<div class="more">
+		<!-- <div style="text-align:right"> -->
+			<%= link_to "もっとみる...", post_images_path, class:"btn btn-light" %>
+		</div>
+	</div>
+</div>

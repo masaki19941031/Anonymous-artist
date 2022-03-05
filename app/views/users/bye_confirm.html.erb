@@ -1,0 +1,17 @@
+<div class="container">
+   <div style="text-align:center">
+
+		<h1>本当に退会してよろしいですか？</h1><br>
+
+			<p>退会すると、これまで投稿した写真や<br>
+			   コメント履歴が消去されフォロー機能が使えなくなります。<br>
+			   退会する場合は、下記の「退会する」を押してください。</p>
+		<br>
+
+		　<strong>
+			<%= link_to "TOPへ戻る", root_path %>/
+			<%= link_to "退会する", user_path(current_user.id), method: :delete %>
+		  </strong>
+
+	</div>
+</div>

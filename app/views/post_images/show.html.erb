@@ -1,0 +1,68 @@
+<!-- 投稿詳細画面 -->
+<div class="container">
+	<!-- フォーマット確認画像の大きさ-->
+	<div class="show_photo">
+		<%= attachment_image_tag @post_image, :image, format: 'jpeg', width: "50%" %>
+	</div>
+
+	<!-- 投稿タイトルなど内容表示 -->
+	<div class="title-comment">
+		<h4><strong><%= @post_image.title %></strong></h4>
+					<%= @post_image.body %>
+
+		<div class="date">
+			By <%= link_to @post_image.user.name, user_path(@post_image.user) %><br>
+
+			   <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+		</div>
+	</div>
+
+	<div style="text-align:center;">
+	<!-- 戻る・削除ボタン -->
+		<% if @post_image.user == current_user %>
+			<%= link_to "削除", post_image_path(@post_image.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+		<% end %>
+		<%= link_to "戻る", post_images_path %>
+
+
+	<!-- いいね機能 -->
+		<div id="favorites_buttons_<%= @post_image.id %>">
+			<%= render partial: 'favorites/favorite', locals: { post_images: @post_images} %>
+		</div>
+
+	<!-- コメント機能 -->
+		<h3>コメント一覧</h3><br>
+			<span class="comment-index">
+				<% @post_image.post_comments.each do |post_comment| %>
+					<table>
+						<tr>
+							<%= post_comment.user.name %>
+							<%= post_comment.comment %>
+						</tr>
+
+	<!-- 本人であればコメント削除できるif文 -->
+						<% if post_comment.user == current_user %>
+							<tr>
+								<%= link_to post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete do %>
+									<button type="button" class="btn btn-danger rounded-circle p-0" style="width:1.5rem;height:1.6rem;">-</button>
+								<% end %>
+							</tr>
+						<% end %>
+					</table>
+				<% end %>
+			</span>
+
+
+
+		<!-- コメント投稿用フォーム -->
+		<%= form_for [@post_image, @post_comment] do |f| %>
+			<%= render 'layouts/error_messages', model: f.object %>
+				<div class="textarea">
+					<%= f.text_area :comment, rows:'3', class: "form-control",placeholder: "コメントはここに" %></div>
+					<br>
+				<div>
+			<%= f.submit "送信する", class: "btn btn-success" %></div>
+
+		<% end %>
+	</div>
+</div>

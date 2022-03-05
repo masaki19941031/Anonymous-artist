@@ -1,0 +1,21 @@
+<div class="container edit">
+
+		<h2>ユーザー編集</h2>
+
+	  	<%= form_for(@user) do |f| %>
+		  	<%= render 'layouts/error_messages', model: f.object %>
+
+			<h5>現在のイメージ</h5>
+			<%= f.attachment_field :profile_image %>
+
+	<!-- ここに現在の画像を表示 -->
+			<%= attachment_image_tag @user, :profile_image, size: "200x200" %>
+
+			<h4>ユーザー名</h4>
+			<%= f.text_field :name %>
+
+			<h4>メールアドレス</h4>
+			<%= f.text_field :email %>
+			<%= f.submit '変更する' %>
+		<% end %>
+</div>

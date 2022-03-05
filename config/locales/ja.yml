@@ -1,0 +1,56 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        remember_me: "ログインを記憶する"
+
+      post_image:
+        image: 写真
+        title: タイトル
+
+
+
+    models:
+      user: "ユーザー"
+      post_image: "写真"
+
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "を入力してください"
+            password:
+              blank: "を入力してください"
+            name:
+              blank: "を入力してください"
+
+
+        post_image:
+          attributes:
+            image:
+              blank: "を選択してください"
+            title:
+              blank: "を入力してください"
+
+
+        user:
+          attributes:
+            user:
+              name: ユーザー名
+              email: メールアドレス
+
+
+
+ja:
+  views:
+      pagination:
+        first: '最初'
+        last: '最後'
+        previous: '前へ'
+        next: '次へ'
+        truncate: '...'

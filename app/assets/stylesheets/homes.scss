@@ -1,0 +1,92 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//homes#top
+.new{
+	font-size:30px;
+	margin-top: 10px;
+}
+
+.new-post{
+	display: inline-block;
+	padding: 0.5em 1em;
+	text-decoration: none;
+	border-radius: 3px;
+	font-weight: bold;
+	color: #FFF;
+	background-color:#93c9ff;
+	transition: .4s;
+	font-size:16px;
+}
+
+.new-post:hover{
+	background-color:#8e8eff;
+}
+
+.form{
+	text-align:right;
+}
+
+//投稿写真本体
+.photo2{
+	display:flex;
+	text-decoration:none;
+	font-style:italic;
+	padding-left: 25px;
+	padding-right:25px;
+	padding-bottom:25px;
+
+.attachment{
+	border-radius:20%;
+}
+}
+
+.more{
+	text-align: right;
+	font-size: 26px;
+a{
+	color:black;
+	font-weight: bold;
+}
+}
+
+
+//homes#about
+.about{
+	margin:30px;
+	text-align:center;
+}
+
+.author{
+	font-family:cursive;
+}
+
+
+.btn-gradient-simple {
+  display:inline-block;
+  padding:0.5em 1em;
+  text-decoration:none;
+  border-radius:3px;
+  font-weight:bold;
+  color:#FFF;
+  background-image:linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
+  transition:.4s;
+}
+
+.btn-gradient-simple:hover {
+  background-image:linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+}
+
+//背景
+.text{
+  	// z-index:0.7;
+  	// opacity:1;
+  	 background: rgba(255,255,255,0.2);
+}
+
+.about{
+	background: image-url('backgroundabout.jpg');
+	height: 500px;
+  	background-size:cover;
+  	background-blend-mode:lighten;
+}

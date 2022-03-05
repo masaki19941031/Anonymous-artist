@@ -1,0 +1,27 @@
+<div class="container">
+	<h2 class="index">ー Photo Gallery ー</h2>
+		<div class="photo">
+			<% @post_images.each do |post_image| %>
+				<div class= "photo2">
+					<%= link_to post_image_path(post_image.id) do %>
+						<%= attachment_image_tag post_image, :image, size: "290x290" %>
+					<br>
+					<% end %>
+						Photo by <strong><%= link_to post_image.user.name, user_path(post_image.user_id) %></strong>
+
+						<%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
+				</div>
+			<% end %>
+		</div>
+
+	<!-- 右下JS戻る確認 -->
+	<div id="page_top">
+		<a href="#"></a></div>
+
+	<!-- ハンバーガー-->
+	<div class="row">
+		<p class="index-page">
+			<%= paginate @post_images %>
+		</p>
+	</div>
+</div>
